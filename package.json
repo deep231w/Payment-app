@@ -19,5 +19,9 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@repo/ui": "^0.0.0",
+    "recoil": "^0.7.7"
+  }
 }
