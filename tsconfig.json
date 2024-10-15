@@ -3,7 +3,8 @@
       "baseUrl": ".",
       "paths": {
         "@repo/db": ["packages/db/index.ts"],
-        "@repo/*": ["packages/*/src"]
+        "@repo/*": ["packages/*/src"],
+        "@repo/ui":["packages/ui/src"]
       },
       "target": "es5",
       "module": "commonjs",
