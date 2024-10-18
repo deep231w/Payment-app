@@ -2,9 +2,10 @@
 import {Appbar} from "@repo/ui/appbar"
 import {SessionProvider, signIn, signOut,useSession } from "next-auth/react"
 export default function Page() :JSX.Element{
-  const session =useSession()
+  const {data:session, status} =useSession();
+
+  if (status=="loading")  return <div>Loading ...</div>
   return <div>
-    <SessionProvider>    <Appbar user={session.data?.user} onSignin={signIn} onSignout={signOut}></Appbar>
-</SessionProvider>
-  </div>
+      <Appbar user={session?.user} onSignin={signIn} onSignout={signOut}></Appbar>
+        </div>
 }
