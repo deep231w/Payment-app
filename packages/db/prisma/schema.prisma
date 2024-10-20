@@ -1,7 +1,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  //output   = "./generated"
+  output   = "../generated"
 }
 
 datasource db {
@@ -15,6 +15,7 @@ model User{
   name      String?
   number    String @unique
   password  String
+  balance   Balance[]
 }
 
 model Merchant {
@@ -23,6 +24,15 @@ model Merchant {
   password String 
   Auth_type AuthType
 }
+
+model Balance {
+  id     Int  @id @default(autoincrement())
+  userId Int  @unique
+  amount Int
+  locked Int
+  user   User @relation(fields: [userId], references: [id])
+}
+
 enum AuthType {
   Google
   Github
