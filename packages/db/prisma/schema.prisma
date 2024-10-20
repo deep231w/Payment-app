@@ -23,7 +23,6 @@ model Merchant {
   password String 
   Auth_type AuthType
 }
-
 enum AuthType {
   Google
   Github
