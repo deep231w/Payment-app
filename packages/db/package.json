@@ -10,9 +10,13 @@
     "prisma": "^5.21.1"
   },
   "exports": {
-    "./client": "./index.ts"
+    ".": "./dist/index.js",   
+    "./client": "./dist/index.js" 
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
+  },
+  "scripts": {
+    "build": "tsc" 
   }
 }

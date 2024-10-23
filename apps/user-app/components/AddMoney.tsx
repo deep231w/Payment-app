@@ -9,11 +9,11 @@ import { CreateOnrampTnsx } from "../app/lib/actions/createOnRampTnx";
 const SUPPORTED_BANK = [
     {   id:1,
         name: "HDFC",
-        redirectUrl: "https://hdfc.com",
+        redirectUrl: "http://localhost:3005/payment",
     },
     {   id:2,
         name: "AXIS",
-        redirectUrl: "https://axisbank.com",
+        redirectUrl: "http://localhost:3005/payment",
     },
 ];
 
@@ -29,7 +29,9 @@ export const AddMoney = () => {
                     label={"Amount"}
                     placeholder={"Amount"}
                     onChange={(val) => {
-                        setValue(Number(val))
+                        
+                        setValue(val)
+                        console.log("input amount" ,val)
                     }}
                 />
                 <div className="py-4 text-left">Bank</div>
@@ -38,6 +40,7 @@ export const AddMoney = () => {
                         const selectedBank = SUPPORTED_BANK.find((x) => x.name === value);
                         setProvider(selectedBank?.name || "");
                         setRedirectUrl(selectedBank?.redirectUrl || "");
+                        
                     }}
                     options={SUPPORTED_BANK.map((x) => ({
                         key: x.id,
@@ -47,8 +50,15 @@ export const AddMoney = () => {
                 <div className="flex justify-center pt-4">
                     <Button
                         onClick={async () => {
-                            await CreateOnrampTnsx( provider ,value);
+                            console.log("Current value (amount):", value);  // Check what value is here
+
+                         if (value > 0) {
+                            await CreateOnrampTnsx(provider, value);  // Only send valid amounts
                             window.location.href = redirectUrl || "";
+                            console.log("Transaction initiated with amount:", value);
+                             } else {
+                                    console.log("Invalid amount:", value);
+                             }
                         }}
                     >
                         Add Money

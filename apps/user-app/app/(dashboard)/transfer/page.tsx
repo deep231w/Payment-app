@@ -8,9 +8,15 @@ import { OnRampTransactions } from '../../../components/onRamptnxClient';
 
 async function getBalance(){
     const session= await getServerSession(authOptions);
+
+      // Check if the session is available
+      if (!session?.user?.id) {
+        console.error('User is not authenticated or user ID is missing.');
+        return { amount: 0, locked: 0 }; // Return default balance if not authenticated
+    }
     const balance= await prisma.balance.findFirst({
         where:{
-            userId:Number(session?.user?.id)
+            userId:Number(session.user.id)
         }
     })
     return {
@@ -23,12 +29,14 @@ async function getBalance(){
 
 async function getTransactions() {
     const session= await getServerSession(authOptions);
+
     const tnsx= await prisma.onRampTransaction.findMany({
         where:{
             userId:Number(session?.user?.id)
         }
     })
     return tnsx.map(t=>({
+            id:t.id,
             amount:t.amount,
             status:t.status,
             provider:t.provider,

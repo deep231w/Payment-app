@@ -23,7 +23,7 @@ export async function CreateOnrampTnsx(provider: string, amount: number) {
             amount: amount * 100
         }
     });
-
+console.log("onRaamp amount is",amount);
     return {
         message: "Done"
     }
