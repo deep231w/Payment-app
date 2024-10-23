@@ -1,6 +1,4 @@
 import { Card } from "@repo/ui/card"
-import { CreateOnrampTnsx } from '../app/lib/actions/createOnRampTnx';
-
 
 export const OnRampTransactions = ({
     transactions

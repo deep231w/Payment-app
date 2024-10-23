@@ -7,11 +7,11 @@ import { useState } from "react";
 import { CreateOnrampTnsx } from "../app/lib/actions/createOnRampTnx";
 
 const SUPPORTED_BANK = [
-    {
+    {   id:1,
         name: "HDFC",
         redirectUrl: "https://hdfc.com",
     },
-    {
+    {   id:2,
         name: "AXIS",
         redirectUrl: "https://axisbank.com",
     },
@@ -40,7 +40,7 @@ export const AddMoney = () => {
                         setRedirectUrl(selectedBank?.redirectUrl || "");
                     }}
                     options={SUPPORTED_BANK.map((x) => ({
-                        key: x.name,
+                        key: x.id,
                         value: x.name,
                     }))}
                 />

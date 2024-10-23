@@ -23,6 +23,7 @@
   "dependencies": {
     "@repo/ui": "^0.0.0",
     "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
     "recoil": "^0.7.7"
   }
 }

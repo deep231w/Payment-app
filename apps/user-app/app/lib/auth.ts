@@ -63,4 +63,4 @@ export const authOptions = {
         }
     }
   }
- 
+  console.log("NEXTAUTH_URL: ", process.env.NEXTAUTH_URL);
