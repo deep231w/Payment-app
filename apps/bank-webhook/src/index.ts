@@ -6,6 +6,10 @@ app.use(express.json())
 
 app.post('/payment', async (req,res)=>{
     const paymentsection= {
+        token:String,
+        user:String,
+        amount:Number
+    }={
         token:req.body.token,
         user:req.body.userdetails,
         amount:req.body.amount
