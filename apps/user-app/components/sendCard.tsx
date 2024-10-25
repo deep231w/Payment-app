@@ -4,6 +4,7 @@ import { TextInput } from "@repo/ui/TextInput"
 import { Button } from "@repo/ui/button"
 import {Center} from "@repo/ui/Center"
 import { useState } from "react"
+import { SendMoney } from "../app/lib/actions/sendMoneyAction"
 export function SendMoneyCard(){
     const [number , setNumber] = useState(0)
     const [amount, setAmount]= useState(0);
@@ -22,15 +23,12 @@ export function SendMoneyCard(){
                                 setAmount(val)
                     }}/>
                 </div>
-                <Button onClick={()=>{
-
+                <Button onClick={async()=>{
+                        await SendMoney(String(number), amount * 100)
                 }}> Send</Button>
         </Card>
         </div>
             </Center>
-            
-            
-        
         
     )
 }
