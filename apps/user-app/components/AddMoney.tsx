@@ -21,11 +21,7 @@ export const AddMoney = () => {
     const [redirectUrl, setRedirectUrl] = useState(SUPPORTED_BANK[0]?.redirectUrl);
     const [value, setValue] = useState(0);
     const [provider, setProvider] = useState(SUPPORTED_BANK[0]?.name || "");
-    const [loading , setLoading] =useState(false)
 
-    async function handleBankWebhook(){
-        
-    }
     return (
         <Card title="Add Money">
             <div className="w-full">

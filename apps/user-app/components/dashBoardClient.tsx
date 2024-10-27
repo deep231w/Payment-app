@@ -1,41 +1,10 @@
 
-import prisma from '@repo/db';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '../../lib/auth';
-import { DashboardClient } from '../../../components/dashBoardClient';
 
-async function getBalance(){
-  const session= await getServerSession(authOptions);
-
-    // Check if the session is available
-    if (!session?.user?.id) {
-      console.error('User is not authenticated or user ID is missing.');
-      return { amount: 0, locked: 0 }; // Return default balance if not authenticated
-  }
-  const balance= await prisma.balance.findFirst({
-      where:{
-          userId:Number(session.user.id)
-      }
-  })
-  return {
-      amount:balance?.amount || 0 ,
-      locked: balance?.amount || 0
-  }
-      
-  
-}
-
-export default async function Dashboard({amount}:{amount:number}){
-    const balance= await getBalance();
-    return <DashboardClient amount={balance.amount} />
-  
-}
-
-
-{/* <div className="container mx-auto p-6">
+export function DashboardClient({amount}:{amount:number}){
+    return <div className="container mx-auto p-6">
     
     <div className="bg-blue-500 text-white p-6 rounded-lg shadow-lg mb-6">
-      <h2 className="text-3xl font-semibold"><div>{balanceAmount}</div></h2>
+      <h2 className="text-3xl font-semibold"><div>₹ {amount/ 100}</div></h2>
       <p>Wallet Balance</p>
     </div>
   
@@ -63,4 +32,5 @@ export default async function Dashboard({amount}:{amount:number}){
         <p className="text-sm text-gray-500">Oct 23, 2024</p>
       </div>
     </div>
-  </div> */}
+  </div>
+}
