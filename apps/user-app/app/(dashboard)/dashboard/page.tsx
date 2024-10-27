@@ -11,7 +11,7 @@ export default function Dashboard(){
     <div className="flex justify-around mb-6">
       <button className="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-lg">Send Money</button>
       <button className="bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-lg">Pay Bills</button>
-      <button className="bg-gray-500 hover:bg-gray-600 text-white py-3 px-6 rounded-lg">Request Payment</button>
+      <button className="bg-gray-500 hover:bg-gray-600 text-white py-3 px-6 rounded-lg">Add Money into wallet</button>
     </div>
   
  
