@@ -13,7 +13,7 @@ export const OnRampTransactions = ({
         provider: string
     }[]
 }) => {
-    if (!transactions.length) {
+    if (!transactions.length) { 
         return <Card title="Recent Transactions">
             <div className="text-center pb-8 pt-8">
                 No Recent transactions

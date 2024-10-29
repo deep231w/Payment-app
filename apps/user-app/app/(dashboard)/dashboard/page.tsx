@@ -21,13 +21,35 @@ async function getBalance(){
       amount:balance?.amount || 0 ,
       locked: balance?.amount || 0
   }
-      
+       
   
 }
 
-export default async function Dashboard({amount}:{amount:number}){
+async function getTransactions() {
+    const session=await getServerSession(authOptions);
+    if(!session){
+      return []
+    }
+
+    const transaction= await prisma.p2pTransfer.findMany({
+      where:{
+            fromUserId:Number(session?.user?.id)
+      }
+    })
+
+    return transaction.map(tx=>({
+            id:tx.id,
+            amount:tx.amount,
+            startTime:tx.timeStamp
+              }))
+}
+export default async function Dashboard(){
     const balance= await getBalance();
-    return <DashboardClient amount={balance.amount} />
+    const transaction= await getTransactions();
+    if(!transaction){
+      return <div>No Recent Transactions</div>
+    }
+    return <DashboardClient transaction={transaction} amount={balance.amount} />
   
 }
 

@@ -1,39 +1,12 @@
-// import { Button } from "./button";
-// import {signIn, signOut} from "next-auth/react"
-// interface AppbarProps {
-//     user?: {
-//         name?: string | null;
-//     },
-//     // TODO: can u figure out what the type should be here?
-//     onSignin:any,
-//     onSignout:any
-// }
-
-// export const Appbar = ({
-//     user,
-//     onSignin,
-//     onSignout
-// }: AppbarProps) => {
-//     return <div className="flex justify-between border-b px-4">
-//         <div className="text-lg flex flex-col justify-center text-gray-700	 ">
-//             PayTM
-//         </div>
-//         <div className="flex flex-col justify-center pt-2">
-//             <Button onClick={user ? onSignout : onSignin}>{user ? "Logout" : "Login"}</Button>
-//         </div>
-//     </div>
-// }
-
-
 import { Button } from "./button";
+import { FiUser, FiLogIn, FiLogOut } from "react-icons/fi"; // Add icons for login/logout
 
 interface AppbarProps {
     user?: {
         name?: string | null;
-    },
-    // TODO: can u figure out what the type should be here?
-    onSignin: any,
-    onSignout: any
+    };
+    onSignin: () => void;
+    onSignout: () => void;
 }
 
 export const Appbar = ({
@@ -41,12 +14,36 @@ export const Appbar = ({
     onSignin,
     onSignout
 }: AppbarProps) => {
-    return <div className="flex justify-between border-b px-4 border-slate-300">
-        <div className="text-lg flex flex-col justify-center text-black">
-            PayTM
+    return (
+        <div className="flex justify-between items-center p-4 shadow-md bg-white border-b border-slate-200">
+            <div className="flex items-center space-x-2">
+                <div className="text-2xl font-semibold text-blue-600 flex items-center">
+                    <FiUser className="mr-2 text-blue-600" />
+                    PayTM
+                </div>
+            </div>
+            <div className="flex items-center space-x-4">
+                {user ? (
+                    <div className="flex items-center space-x-2">
+                        <span className="text-gray-600 font-medium">{user.name}</span>
+                        <Button
+                            onClick={onSignout}
+                            className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 flex items-center"
+                        >
+                            <FiLogOut className="mr-1" />
+                            Logout
+                        </Button>
+                    </div>
+                ) : (
+                    <Button
+                        onClick={onSignin}
+                        className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 flex items-center"
+                    >
+                        <FiLogIn className="mr-1" />
+                        Login
+                    </Button>
+                )}
+            </div>
         </div>
-        <div className="flex flex-col justify-center pt-2">
-            <Button onClick={user ? onSignout : onSignin}>{user ? "Logout" : "Login"}</Button>
-        </div>
-    </div>
-}
+    );
+};
