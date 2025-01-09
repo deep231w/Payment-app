@@ -8,7 +8,7 @@ app.post('/payment', async (req,res)=>{
     const paymentsection= {
         token:String,
         user:String,
-        amount:Number
+        amount:Number 
     }={
         token:req.body.token,
         user:req.body.userdetails,
