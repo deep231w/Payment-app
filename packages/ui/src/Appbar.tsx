@@ -31,7 +31,7 @@ export const Appbar = ({
                             className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 flex items-center"
                         >
                             <FiLogOut className="mr-1" />
-                            Logout
+                            Logoout
                         </Button>
                     </div>
                 ) : (
