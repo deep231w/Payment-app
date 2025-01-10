@@ -24,3 +24,6 @@ jobs:
 
       - name: Run Build
         run: npm run build
+        
+      - name: Build packages
+        run: npx turbo run build
