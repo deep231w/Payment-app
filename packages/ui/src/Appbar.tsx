@@ -28,7 +28,7 @@ export const Appbar = ({
                         <span className="text-gray-600 font-medium">{user.name}</span>
                         <Button
                             onClick={onSignout}
-                            className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 flex items-center"
+                            //className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 flex items-center"
                         >
                             <FiLogOut className="mr-1" />
                             Logoout
@@ -37,7 +37,7 @@ export const Appbar = ({
                 ) : (
                     <Button
                         onClick={onSignin}
-                        className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 flex items-center"
+                        //className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 flex items-center"
                     >
                         <FiLogIn className="mr-1" />
                         Login
