@@ -19,11 +19,24 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Cache Node modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            ~/.turbo
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Build
+      - name: Install Turbo globally
+        run: npm install -g turbo
+
+      - name: Run Next.js build
         run: npm run build
-        
-      - name: Build packages
-        run: npx turbo run build
+
+      - name: Build packages using Turbo
+        run: npx turbo run build --filter=web
