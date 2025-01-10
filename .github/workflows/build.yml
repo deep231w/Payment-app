@@ -35,14 +35,8 @@ jobs:
       - name: Install Turbo globally
         run: npm install -g turbo
 
-      - name: Build @repo/ui package
-        run: npx turbo run build --filter=@repo/ui
-      
-      - name: Build web package
-        run: npx turbo run build --filter=web
-      
+      - name: Build @repo/ui and web packages
+        run: npx turbo run build --filter=@repo/ui --filter=web
+
       - name: Run Next.js build
         run: npm run build
-
-      - name: Build packages using Turbo
-        run: npx turbo run build --filter=web
