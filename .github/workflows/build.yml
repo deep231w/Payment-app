@@ -30,9 +30,7 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-
-      - name: install prisma
-        run: npx prisma generate
+        
       - name: Install Turbo globally
         run: npm install -g turbo
 
