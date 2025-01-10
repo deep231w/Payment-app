@@ -48,7 +48,7 @@ export const AddMoney = () => {
                     }))}
                 />
                 <div className="flex justify-center pt-4">
-                    <Button className={""}
+                    <Button
                         onClick={async () => {
                             console.log("Current value (amount):", value);  // Check what value is here
 

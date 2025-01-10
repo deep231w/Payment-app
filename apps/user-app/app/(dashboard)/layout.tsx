@@ -1,40 +1,40 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import React from "react";
-
+import {ReactNode} from "react";
+import { SidebarItem } from "../../components/SidebarItem";
 // SidebarItem Component
-export const SidebarItem = ({
-  href,
-  title,
-  icon,
-}: {
-  href: string;
-  title: string;
-  icon: React.ReactNode;
-}) => {
-  const pathname = usePathname();
-  const router = useRouter();
-  const selected = pathname === href;
+// export const SidebarItem= ({
+//   href,
+//   title,
+//   icon,
+// }: {
+//   href: string;
+//   title: string;
+//   icon: ReactNode;
+// }) => {
+//   const pathname = usePathname();
+//   const router = useRouter();
+//   const selected = pathname === href;
 
-  return (
-    <div
-      className={`flex items-center cursor-pointer p-3 pl-8 rounded-lg transition-colors duration-200 ${
-        selected ? "bg-[#e0e0f7] text-[#6a51a6] shadow-md" : "text-slate-600 hover:bg-slate-200"
-      }`}
-      onClick={() => router.push(href)}
-    >
-      <div className="pr-3">{icon}</div>
-      <div className="font-semibold">{title}</div>
-    </div>
-  );
-};
+//   return (
+//     <div
+//       className={`flex items-center cursor-pointer p-3 pl-8 rounded-lg transition-colors duration-200 ${
+//         selected ? "bg-[#e0e0f7] text-[#6a51a6] shadow-md" : "text-slate-600 hover:bg-slate-200"
+//       }`}
+//       onClick={() => router.push(href)}
+//     >
+//       <div className="pr-3">{icon}</div>
+//       <div className="font-semibold">{title}</div>
+//     </div>
+//   );
+// };
 
 // Layout Component with Sidebar
 export default function Layout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }): JSX.Element {
   return (
     <div className="flex">
