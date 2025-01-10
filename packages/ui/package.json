@@ -16,7 +16,7 @@
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
-    "build": "tsc --build"
+    "build": "turbo build"
 
   },
   "devDependencies": {
