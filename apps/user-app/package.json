@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev --turbo",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "start-user-app": "next start", 
+    "prisma:generate":"cd packages/db && npx prisma generate"
   },
   "dependencies": {
     "@repo/db": "*",
