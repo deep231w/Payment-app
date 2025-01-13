@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev --port 3001",
     "start": "next start",
     "lint": "next lint",
-    "start-user-app": "next start", 
-    "prisma:generate":"cd packages/db && npx prisma generate"
+    
+    "build": "next build"
   },
   "dependencies": {
     "@repo/db": "*",

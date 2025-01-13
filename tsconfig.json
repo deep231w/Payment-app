@@ -11,6 +11,8 @@
       "strict": true
     },
     "include": ["apps/**/*", "packages/**/*"],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules"],
+    "extends": "@repo/typescript-config/base.json"
+
   }
   
